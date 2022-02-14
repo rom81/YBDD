@@ -166,12 +166,18 @@ void evalCmd()
       return;
     }
 
-    if (op=='+')
+    if (op=='+') {
+      cout << "\nPerforming " << node1->getLabel() << " OR " << node2->getLabel() << endl;
       funcNode = bdd.OR(node1, node2);
-    else if (op=='&')
+    }
+    else if (op=='&') {
+      cout << "\nPerforming " << node1->getLabel() << " AND " << node2->getLabel() << endl;
       funcNode = bdd.AND(node1, node2);
-    else
+    }
+    else {
+      cout << "\nPerforming " << node1->getLabel() << " XOR " << node2->getLabel() << endl;
       funcNode = bdd.XOR(node1, node2);
+    }
 
     funcTable.insert(funcName, funcNode);
     delete[] vars;

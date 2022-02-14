@@ -76,17 +76,13 @@ public:
   // If the Zero Node exists, return it, if not, create it and insert 
   // it into the the appropriate hash table.
   bdd_node *Zero() {
-    // YOU FILL IN THE CODE HERE    
-
-    return NULL; // FIXME
+    return findOrCreateNode(ZERO_INDEX, "0", NULL, NULL);
   }
     
   // If the One Node exists, return it, if not, create it and insert 
   // it into the the appropriate hash table.
   bdd_node *One() {
-    // YOU FILL IN THE CODE HERE
-
-    return NULL; // FIXME
+    return findOrCreateNode(ONE_INDEX, "1", NULL, NULL);
   }
 
   inline bdd_node *getOne() { return ONE_NODE; }
@@ -97,46 +93,107 @@ public:
   // node using the CUR_INDEX. It also needs to increment CUR_INDEX
   // when it is done.
   bdd_node *newVar(char *label) {
-    // YOU FILL IN THE CODE HERE
+    bdd_node *node = createNode(CUR_INDEX, label, NULL, NULL);
+    CUR_INDEX++;
+    return node; 
+  }
 
-    return NULL; // FIXME
+  bdd_node *RESTRICT(bdd_node *F, int v, int k)
+  {
+    // Case 1: Restrict on root node variable
+    if (F->getIndex() == v) {
+      if (k == 1) {
+        return (F->getHigh() != NULL) ? F->getHigh() : One();
+      } 
+      else {
+        return (F->getLow() != NULL) ? F->getLow() : Zero();
+      }
+    }
+
+    // Case 2: Restrict on variable less than root node variable
+    return F;
   }
     
   // Here is the primary ITE function. It should work just as defined
   // in the lectures.
   bdd_node *ITE(bdd_node *I, bdd_node *T, bdd_node *E) {
-    // YOU FILL IN THE CODE HERE
+    cout << "calling ITE with " << endl;
+    cout << "\tI->getLabel()=" << I->getLabel() << endl;
+    cout << "\tT->getLabel()=" << T->getLabel() << endl;
+    cout << "\tE->getLabel()=" << E->getLabel() << endl;
 
-    return NULL;  // FIXME
+    // Terminal cases
+    if (I == getOne()) {
+      cout << "I == 1, returning T" << endl;
+      return T;
+    } else if (I == getZero()) {
+      cout << "I == 0, returning E" << endl;
+      return E;
+    } else if (T == One() && E == Zero()) {
+      cout << "T == 1 and E == 0, returning I" << endl;
+      return I;
+    } else if (T == E) {
+      cout << "T == E, returning E" << endl;
+      return E;
+    }
+    
+    // Recursive case
+    else {
+
+      // Generate hashString
+      char hashString[100];
+      sprintf(hashString, "%d,%d,%d", reinterpret_cast<int>(I),
+        reinterpret_cast<int>(T),
+        reinterpret_cast<int>(E));
+
+      // Check if operation table has entry for (I, T, E)
+      if (opTable.lookup(hashString) != NULL) {
+        return opTable.lookup(hashString);
+      }
+     
+      // Choose splitting variable: smallest var among roots of I, T, E
+      int x = std::min(std::min(I->getIndex(), T->getIndex()), E->getIndex());
+      cout << "splitting var: " << x << endl;
+
+      // Find positive and negative cofactors
+      bdd_node *PosFactor = ITE(RESTRICT(I,x,1), RESTRICT(T,x,1), RESTRICT(E,x,1));
+      bdd_node *NegFactor = ITE(RESTRICT(I,x,0), RESTRICT(T,x,0), RESTRICT(E,x,0));
+
+      // TODO: Create new label
+      char new_label[100];
+      sprintf(new_label, "label%d", CUR_INDEX);
+      cout << "new_label: " << new_label << endl;
+
+      // Create new node for splitting variable
+      bdd_node* R = findOrCreateNode(x, new_label, NegFactor, PosFactor);
+
+      // Insert into operation table
+      sprintf(hashString, "%d,%d,%d", reinterpret_cast<int>(I),
+        reinterpret_cast<int>(T),
+        reinterpret_cast<int>(E));
+      opTable.insert(hashString, R);
+
+      return R;
+    }
   }                   
 
   // The following are stubs for all the basic logic operations. They 
   // should all be defined in terms of the ITE method.
   bdd_node *NOT(bdd_node *f) {
-    // YOU FILL IN THE CODE HERE
-
-    return NULL;  // FIXME
+    return ITE(f, Zero(), One());
   }
     
   bdd_node *AND(bdd_node *f, bdd_node *g) {
-    // YOU FILL IN THE CODE HERE
-
-    return NULL;  // FIXME
+    return ITE(f, g, Zero());
   }
     
   bdd_node *OR(bdd_node *f, bdd_node *g) {
-    // YOU FILL IN THE CODE HERE
-
-    return NULL;  // FIXME
+    return ITE(f, One(), g);
   }
-
     
   bdd_node *XOR(bdd_node *f, bdd_node *g) {
-    // YOU FILL IN THE CODE HERE
-
-    return NULL;  // FIXME
+    return ITE(f, NOT(g), g);
   }
-
     
   // This method does the actual execution of the "bdd" command -
   // which prints out the BDD structure.
