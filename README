@@ -1,0 +1,52 @@
+*//////////////////////////////*
+*                              *
+*    Y B D D    R E A D M E    *
+*                              *
+*         C++ Version          *
+*         Spring 2022          *
+*                              *
+*//////////////////////////////*
+
+The files:
+
+Makefile 	-  This file contains the compiler commands
+bdd.cxx 	-  This file contains all the functions to support the
+                   commandline interface.There is a "help" command for
+		   a list of all available YBDD commands.
+bdd_functs.h 	-  This file contains all the methods necessary to create
+		   a working BDD package. The methods which need to be
+		   filled in are contained below. Please do not change
+	  	   the interfaces to these functions, as they are called
+		   by the command line processor.
+bdd_node.h 	-  This file contains the BDD nodes structure class which
+         	   includes the methods and variables used to represent
+                   the BDD nodes.
+
+How to run YBDD:
+--------------------------------------------------------
+The included Makefile will run the necessary compiler commands
+and options. Simply run the command "make" to compile your code.
+Then run the command "YBDD" to begin the YBDD command line interface.
+
+The following is a list of supported YBDD commands:
+boolean <list of var names>
+eval <dest> <expr>
+source <filename>
+bdd <funct>
+size <funct>
+total <funct>
+quit
+
+
+What you need to do to complete the YBDD:
+--------------------------------------------------------
+The following empty routines within bdd_functs.h must be completed:
+
+    bdd_node *Zero() {    }
+    bdd_node *One()  {    }
+    bdd_node *newVar(char *label) {    }
+    bdd_node *ITE(bdd_node *I, bdd_node *T, bdd_node *E) {   }
+    bdd_node *NOT(bdd_node *f) {    }
+    bdd_node *AND(bdd_node *f, bdd_node *g) {    }
+    bdd_node *OR(bdd_node *f, bdd_node *g)  {    }
+    bdd_node *XOR(bdd_node *f, bdd_node *g) {    }

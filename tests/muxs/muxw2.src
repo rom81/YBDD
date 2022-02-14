@@ -1,0 +1,9 @@
+boolean d0 d1 c
+eval nc !c
+eval t1 nc&d0
+eval t2 c&d1
+eval f t1 + t2
+bdd f
+size f
+quit
+

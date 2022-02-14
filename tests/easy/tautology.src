@@ -1,0 +1,14 @@
+boolean a b c
+eval na !a
+eval nb !b
+eval nc !c
+eval t1 a&b
+eval t2 a&c
+eval t3 a&nb
+eval t4 t3&nc
+eval t5 t1+t2
+eval t6 t5+t4
+eval f t6+na
+bdd f
+quit
+

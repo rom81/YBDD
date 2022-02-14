@@ -1,0 +1,49 @@
+# sanity check by satisfy
+# example 1
+# run this only if you implement "satisfy"
+boolean x0 y0 x1 y1 x2
+eval z0 x0 & y0
+eval ptmp0 x0 & y1
+eval ptmp1 x1 & y0
+eval ptmp2 x1 & y1
+eval ptmp3 x2 & y0
+eval ptmp4 x2 & y1
+eval z1 ptmp1 ^ ptmp0
+eval ptmp5 ptmp1 & ptmp0
+eval s0 ptmp5 ^ ptmp3
+eval ptmp6 ptmp5 & ptmp3
+eval ptmp7 ptmp2 & s0
+eval z2 s0 ^ ptmp2
+eval s1 ptmp7 ^ ptmp6
+eval ptmp8 ptmp7 & ptmp6
+eval ptmp9 ptmp4 & s1
+eval z3 s1 ^ ptmp4
+eval z4 ptmp9 ^ ptmp8
+# satisfy test
+eval k1 z0 & z1
+eval k2 ! z2
+eval k3 ! z3
+eval k4 k2 & k3
+eval k5 k1 & k4
+eval eq19 z4 & k5
+eval l1 ! z0
+eval l2 l1 & z1
+eval l3 l2 & z2
+eval l4 ! z3
+eval l5 l4 & l3
+eval eq22 z4 & l5
+eval j1 ! z1
+eval j2 ! z2
+eval j3 j1 & j2
+eval j4 j3 & z0
+eval j5 z3 & j4
+eval j6 ! z4
+eval eq9 j6 & j5
+# start checking
+# only run this if you have implemented "satisfy"
+satisfy eq22
+# eq22 is not satisfiable, otherwise something is wrong
+satisfy eq19 
+# eq19 is not satisfiable
+satisfy eq9
+# eq9 is satisfiable only when ( x0 y0 x1 y1 x2 ) = (11110)

@@ -1,0 +1,41 @@
+# sanity check by size: 
+# example 2
+# you must use the ordering defined below
+boolean x6 x5 x4 x3 x2 x1 x0 y6 y5 y4 y3 y2 y1 y0
+eval s0 x0 ^ y0
+eval c0 x0 & y0
+eval t1 x1 ^ y1
+eval s1 t1 ^ c0
+eval p1 x1 & y1
+eval q1 t1 & c0
+eval c1 p1 ^ q1
+eval t2 x2 ^ y2
+eval s2 t2 ^ c1
+eval p2 x2 & y2
+eval q2 t2 & c1
+eval c2 p2 ^ q2
+eval t3 x3 ^ y3
+eval s3 t3 ^ c2
+eval p3 x3 & y3
+eval q3 t3 & c2
+eval c3 p3 ^ q3
+eval t4 x4 ^ y4
+eval s4 t4 ^ c3
+eval p4 x4 & y4
+eval q4 t4 & c3
+eval c4 p4 ^ q4
+eval t5 x5 ^ y5
+eval s5 t5 ^ c4
+eval p5 x5 & y5
+eval q5 t5 & c4
+eval c5 p5 ^ q5
+eval t6 x6 ^ y6
+eval s6 t6 ^ c5
+eval p6 x6 & y6
+eval q6 t6 & c5
+eval c6 p6 ^ q6
+# start checking
+size s6
+# if s6 size is not 497, something is wrong.
+size c6
+# if c6 size is not 376, something is wrong.

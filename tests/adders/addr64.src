@@ -1,0 +1,512 @@
+boolean a63 b63 a62 b62 a61 b61 a60 b60 a59 b59 a58 b58 a57 b57 a56 b56 a55 b55 a54 b54 a53 b53 a52 b52 a51 b51 a50 b50 a49 b49 a48 b48 a47 b47 a46 b46 a45 b45 a44 b44 a43 b43 a42 b42 a41 b41 a40 b40 a39 b39 a38 b38 a37 b37 a36 b36 a35 b35 a34 b34 a33 b33 a32 b32 a31 b31 a30 b30 a29 b29 a28 b28 a27 b27 a26 b26 a25 b25 a24 b24 a23 b23 a22 b22 a21 b21 a20 b20 a19 b19 a18 b18 a17 b17 a16 b16 a15 b15 a14 b14 a13 b13 a12 b12 a11 b11 a10 b10 a9 b9 a8 b8 a7 b7 a6 b6 a5 b5 a4 b4 a3 b3 a2 b2 a1 b1 a0 b0
+
+eval s0 a0 ^ b0
+eval c0 a0 & b0
+
+eval t1 a1 ^ b1
+eval s1 t1 ^ c0
+eval t1 a1 & b1
+eval t2 a1 & c0
+eval t3 b1 & c0
+eval t4 t1 + t2
+eval c1 t4 + t3
+
+eval t1 a2 ^ b2
+eval s2 t1 ^ c1
+eval t1 a2 & b2
+eval t2 a2 & c1
+eval t3 b2 & c1
+eval t4 t1 + t2
+eval c2 t4 + t3
+
+eval t1 a3 ^ b3
+eval s3 t1 ^ c2
+eval t1 a3 & b3
+eval t2 a3 & c2
+eval t3 b3 & c2
+eval t4 t1 + t2
+eval c3 t4 + t3
+
+eval t1 a4 ^ b4
+eval s4 t1 ^ c3
+eval t1 a4 & b4
+eval t2 a4 & c3
+eval t3 b4 & c3
+eval t4 t1 + t2
+eval c4 t4 + t3
+
+eval t1 a5 ^ b5
+eval s5 t1 ^ c4
+eval t1 a5 & b5
+eval t2 a5 & c4
+eval t3 b5 & c4
+eval t4 t1 + t2
+eval c5 t4 + t3
+
+eval t1 a6 ^ b6
+eval s6 t1 ^ c5
+eval t1 a6 & b6
+eval t2 a6 & c5
+eval t3 b6 & c5
+eval t4 t1 + t2
+eval c6 t4 + t3
+
+eval t1 a7 ^ b7
+eval s7 t1 ^ c6
+eval t1 a7 & b7
+eval t2 a7 & c6
+eval t3 b7 & c6
+eval t4 t1 + t2
+eval c7 t4 + t3
+
+eval t1 a8 ^ b8
+eval s8 t1 ^ c7
+eval t1 a8 & b8
+eval t2 a8 & c7
+eval t3 b8 & c7
+eval t4 t1 + t2
+eval c8 t4 + t3
+
+eval t1 a9 ^ b9
+eval s9 t1 ^ c8
+eval t1 a9 & b9
+eval t2 a9 & c8
+eval t3 b9 & c8
+eval t4 t1 + t2
+eval c9 t4 + t3
+
+eval t1 a10 ^ b10
+eval s10 t1 ^ c9
+eval t1 a10 & b10
+eval t2 a10 & c9
+eval t3 b10 & c9
+eval t4 t1 + t2
+eval c10 t4 + t3
+
+eval t1 a11 ^ b11
+eval s11 t1 ^ c10
+eval t1 a11 & b11
+eval t2 a11 & c10
+eval t3 b11 & c10
+eval t4 t1 + t2
+eval c11 t4 + t3
+
+eval t1 a12 ^ b12
+eval s12 t1 ^ c11
+eval t1 a12 & b12
+eval t2 a12 & c11
+eval t3 b12 & c11
+eval t4 t1 + t2
+eval c12 t4 + t3
+
+eval t1 a13 ^ b13
+eval s13 t1 ^ c12
+eval t1 a13 & b13
+eval t2 a13 & c12
+eval t3 b13 & c12
+eval t4 t1 + t2
+eval c13 t4 + t3
+
+eval t1 a14 ^ b14
+eval s14 t1 ^ c13
+eval t1 a14 & b14
+eval t2 a14 & c13
+eval t3 b14 & c13
+eval t4 t1 + t2
+eval c14 t4 + t3
+
+eval t1 a15 ^ b15
+eval s15 t1 ^ c14
+eval t1 a15 & b15
+eval t2 a15 & c14
+eval t3 b15 & c14
+eval t4 t1 + t2
+eval c15 t4 + t3
+
+eval t1 a16 ^ b16
+eval s16 t1 ^ c15
+eval t1 a16 & b16
+eval t2 a16 & c15
+eval t3 b16 & c15
+eval t4 t1 + t2
+eval c16 t4 + t3
+
+eval t1 a17 ^ b17
+eval s17 t1 ^ c16
+eval t1 a17 & b17
+eval t2 a17 & c16
+eval t3 b17 & c16
+eval t4 t1 + t2
+eval c17 t4 + t3
+
+eval t1 a18 ^ b18
+eval s18 t1 ^ c17
+eval t1 a18 & b18
+eval t2 a18 & c17
+eval t3 b18 & c17
+eval t4 t1 + t2
+eval c18 t4 + t3
+
+eval t1 a19 ^ b19
+eval s19 t1 ^ c18
+eval t1 a19 & b19
+eval t2 a19 & c18
+eval t3 b19 & c18
+eval t4 t1 + t2
+eval c19 t4 + t3
+
+eval t1 a20 ^ b20
+eval s20 t1 ^ c19
+eval t1 a20 & b20
+eval t2 a20 & c19
+eval t3 b20 & c19
+eval t4 t1 + t2
+eval c20 t4 + t3
+
+eval t1 a21 ^ b21
+eval s21 t1 ^ c20
+eval t1 a21 & b21
+eval t2 a21 & c20
+eval t3 b21 & c20
+eval t4 t1 + t2
+eval c21 t4 + t3
+
+eval t1 a22 ^ b22
+eval s22 t1 ^ c21
+eval t1 a22 & b22
+eval t2 a22 & c21
+eval t3 b22 & c21
+eval t4 t1 + t2
+eval c22 t4 + t3
+
+eval t1 a23 ^ b23
+eval s23 t1 ^ c22
+eval t1 a23 & b23
+eval t2 a23 & c22
+eval t3 b23 & c22
+eval t4 t1 + t2
+eval c23 t4 + t3
+
+eval t1 a24 ^ b24
+eval s24 t1 ^ c23
+eval t1 a24 & b24
+eval t2 a24 & c23
+eval t3 b24 & c23
+eval t4 t1 + t2
+eval c24 t4 + t3
+
+eval t1 a25 ^ b25
+eval s25 t1 ^ c24
+eval t1 a25 & b25
+eval t2 a25 & c24
+eval t3 b25 & c24
+eval t4 t1 + t2
+eval c25 t4 + t3
+
+eval t1 a26 ^ b26
+eval s26 t1 ^ c25
+eval t1 a26 & b26
+eval t2 a26 & c25
+eval t3 b26 & c25
+eval t4 t1 + t2
+eval c26 t4 + t3
+
+eval t1 a27 ^ b27
+eval s27 t1 ^ c26
+eval t1 a27 & b27
+eval t2 a27 & c26
+eval t3 b27 & c26
+eval t4 t1 + t2
+eval c27 t4 + t3
+
+eval t1 a28 ^ b28
+eval s28 t1 ^ c27
+eval t1 a28 & b28
+eval t2 a28 & c27
+eval t3 b28 & c27
+eval t4 t1 + t2
+eval c28 t4 + t3
+
+eval t1 a29 ^ b29
+eval s29 t1 ^ c28
+eval t1 a29 & b29
+eval t2 a29 & c28
+eval t3 b29 & c28
+eval t4 t1 + t2
+eval c29 t4 + t3
+
+eval t1 a30 ^ b30
+eval s30 t1 ^ c29
+eval t1 a30 & b30
+eval t2 a30 & c29
+eval t3 b30 & c29
+eval t4 t1 + t2
+eval c30 t4 + t3
+
+eval t1 a31 ^ b31
+eval s31 t1 ^ c30
+eval t1 a31 & b31
+eval t2 a31 & c30
+eval t3 b31 & c30
+eval t4 t1 + t2
+eval c31 t4 + t3
+
+eval t1 a32 ^ b32
+eval s32 t1 ^ c31
+eval t1 a32 & b32
+eval t2 a32 & c31
+eval t3 b32 & c31
+eval t4 t1 + t2
+eval c32 t4 + t3
+
+eval t1 a33 ^ b33
+eval s33 t1 ^ c32
+eval t1 a33 & b33
+eval t2 a33 & c32
+eval t3 b33 & c32
+eval t4 t1 + t2
+eval c33 t4 + t3
+
+eval t1 a34 ^ b34
+eval s34 t1 ^ c33
+eval t1 a34 & b34
+eval t2 a34 & c33
+eval t3 b34 & c33
+eval t4 t1 + t2
+eval c34 t4 + t3
+
+eval t1 a35 ^ b35
+eval s35 t1 ^ c34
+eval t1 a35 & b35
+eval t2 a35 & c34
+eval t3 b35 & c34
+eval t4 t1 + t2
+eval c35 t4 + t3
+
+eval t1 a36 ^ b36
+eval s36 t1 ^ c35
+eval t1 a36 & b36
+eval t2 a36 & c35
+eval t3 b36 & c35
+eval t4 t1 + t2
+eval c36 t4 + t3
+
+eval t1 a37 ^ b37
+eval s37 t1 ^ c36
+eval t1 a37 & b37
+eval t2 a37 & c36
+eval t3 b37 & c36
+eval t4 t1 + t2
+eval c37 t4 + t3
+
+eval t1 a38 ^ b38
+eval s38 t1 ^ c37
+eval t1 a38 & b38
+eval t2 a38 & c37
+eval t3 b38 & c37
+eval t4 t1 + t2
+eval c38 t4 + t3
+
+eval t1 a39 ^ b39
+eval s39 t1 ^ c38
+eval t1 a39 & b39
+eval t2 a39 & c38
+eval t3 b39 & c38
+eval t4 t1 + t2
+eval c39 t4 + t3
+
+eval t1 a40 ^ b40
+eval s40 t1 ^ c39
+eval t1 a40 & b40
+eval t2 a40 & c39
+eval t3 b40 & c39
+eval t4 t1 + t2
+eval c40 t4 + t3
+
+eval t1 a41 ^ b41
+eval s41 t1 ^ c40
+eval t1 a41 & b41
+eval t2 a41 & c40
+eval t3 b41 & c40
+eval t4 t1 + t2
+eval c41 t4 + t3
+
+eval t1 a42 ^ b42
+eval s42 t1 ^ c41
+eval t1 a42 & b42
+eval t2 a42 & c41
+eval t3 b42 & c41
+eval t4 t1 + t2
+eval c42 t4 + t3
+
+eval t1 a43 ^ b43
+eval s43 t1 ^ c42
+eval t1 a43 & b43
+eval t2 a43 & c42
+eval t3 b43 & c42
+eval t4 t1 + t2
+eval c43 t4 + t3
+
+eval t1 a44 ^ b44
+eval s44 t1 ^ c43
+eval t1 a44 & b44
+eval t2 a44 & c43
+eval t3 b44 & c43
+eval t4 t1 + t2
+eval c44 t4 + t3
+
+eval t1 a45 ^ b45
+eval s45 t1 ^ c44
+eval t1 a45 & b45
+eval t2 a45 & c44
+eval t3 b45 & c44
+eval t4 t1 + t2
+eval c45 t4 + t3
+
+eval t1 a46 ^ b46
+eval s46 t1 ^ c45
+eval t1 a46 & b46
+eval t2 a46 & c45
+eval t3 b46 & c45
+eval t4 t1 + t2
+eval c46 t4 + t3
+
+eval t1 a47 ^ b47
+eval s47 t1 ^ c46
+eval t1 a47 & b47
+eval t2 a47 & c46
+eval t3 b47 & c46
+eval t4 t1 + t2
+eval c47 t4 + t3
+
+eval t1 a48 ^ b48
+eval s48 t1 ^ c47
+eval t1 a48 & b48
+eval t2 a48 & c47
+eval t3 b48 & c47
+eval t4 t1 + t2
+eval c48 t4 + t3
+
+eval t1 a49 ^ b49
+eval s49 t1 ^ c48
+eval t1 a49 & b49
+eval t2 a49 & c48
+eval t3 b49 & c48
+eval t4 t1 + t2
+eval c49 t4 + t3
+
+eval t1 a50 ^ b50
+eval s50 t1 ^ c49
+eval t1 a50 & b50
+eval t2 a50 & c49
+eval t3 b50 & c49
+eval t4 t1 + t2
+eval c50 t4 + t3
+
+eval t1 a51 ^ b51
+eval s51 t1 ^ c50
+eval t1 a51 & b51
+eval t2 a51 & c50
+eval t3 b51 & c50
+eval t4 t1 + t2
+eval c51 t4 + t3
+
+eval t1 a52 ^ b52
+eval s52 t1 ^ c51
+eval t1 a52 & b52
+eval t2 a52 & c51
+eval t3 b52 & c51
+eval t4 t1 + t2
+eval c52 t4 + t3
+
+eval t1 a53 ^ b53
+eval s53 t1 ^ c52
+eval t1 a53 & b53
+eval t2 a53 & c52
+eval t3 b53 & c52
+eval t4 t1 + t2
+eval c53 t4 + t3
+
+eval t1 a54 ^ b54
+eval s54 t1 ^ c53
+eval t1 a54 & b54
+eval t2 a54 & c53
+eval t3 b54 & c53
+eval t4 t1 + t2
+eval c54 t4 + t3
+
+eval t1 a55 ^ b55
+eval s55 t1 ^ c54
+eval t1 a55 & b55
+eval t2 a55 & c54
+eval t3 b55 & c54
+eval t4 t1 + t2
+eval c55 t4 + t3
+
+eval t1 a56 ^ b56
+eval s56 t1 ^ c55
+eval t1 a56 & b56
+eval t2 a56 & c55
+eval t3 b56 & c55
+eval t4 t1 + t2
+eval c56 t4 + t3
+
+eval t1 a57 ^ b57
+eval s57 t1 ^ c56
+eval t1 a57 & b57
+eval t2 a57 & c56
+eval t3 b57 & c56
+eval t4 t1 + t2
+eval c57 t4 + t3
+
+eval t1 a58 ^ b58
+eval s58 t1 ^ c57
+eval t1 a58 & b58
+eval t2 a58 & c57
+eval t3 b58 & c57
+eval t4 t1 + t2
+eval c58 t4 + t3
+
+eval t1 a59 ^ b59
+eval s59 t1 ^ c58
+eval t1 a59 & b59
+eval t2 a59 & c58
+eval t3 b59 & c58
+eval t4 t1 + t2
+eval c59 t4 + t3
+
+eval t1 a60 ^ b60
+eval s60 t1 ^ c59
+eval t1 a60 & b60
+eval t2 a60 & c59
+eval t3 b60 & c59
+eval t4 t1 + t2
+eval c60 t4 + t3
+
+eval t1 a61 ^ b61
+eval s61 t1 ^ c60
+eval t1 a61 & b61
+eval t2 a61 & c60
+eval t3 b61 & c60
+eval t4 t1 + t2
+eval c61 t4 + t3
+
+eval t1 a62 ^ b62
+eval s62 t1 ^ c61
+eval t1 a62 & b62
+eval t2 a62 & c61
+eval t3 b62 & c61
+eval t4 t1 + t2
+eval c62 t4 + t3
+
+eval t1 a63 ^ b63
+eval s63 t1 ^ c62
+eval t1 a63 & b63
+eval t2 a63 & c62
+eval t3 b63 & c62
+eval t4 t1 + t2
+eval c63 t4 + t3
+
+size s63
+size c63
+quit

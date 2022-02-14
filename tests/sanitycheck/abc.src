@@ -1,0 +1,5 @@
+boolean a b c
+eval t a&b
+eval f t+c
+bdd f
+quit

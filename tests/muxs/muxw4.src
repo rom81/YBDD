@@ -1,0 +1,16 @@
+boolean d0 d1 d2 d3 d4 c1 c2
+eval nc1 !c1
+eval nc2 !c2
+eval p0 nc1&nc2
+eval p1 nc1&c2
+eval p2 c1&nc2
+eval p3 c1&c2
+eval dp0 p0&d0
+eval dp1 p1&d1
+eval dp2 p2&d2
+eval dp3 p3&d3
+eval t1 dp0+dp1
+eval t2 t1+dp2
+eval f t2+dp3
+size f
+quit
