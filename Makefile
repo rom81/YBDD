@@ -1,4 +1,4 @@
-CFLAGS = -ggdb3 -m64 -fms-extensions -Wno-deprecated -Wno-pointer-to-int-cast -Wno-write-strings -Wformat=2 -DDEBUG \
+CFLAGS = -ggdb3 -m64 -Wno-deprecated -Wno-write-strings -Wformat=2 -DDEBUG \
 -Wold-style-cast
 #CFLAGS = -O3
 

@@ -51,8 +51,8 @@ public:
       char hashString[100];
       // This call treats pointers as integers; avert your eyes.
       sprintf(hashString, "%d,%d,%d", index,
-	      reinterpret_cast<int>(low),
-	      reinterpret_cast<int>(high));
+	      reinterpret_cast<size_t>(low),
+	      reinterpret_cast<size_t>(high));
       bdd_node *it = uniqueTable.lookup(hashString);
       if (it) return it;
       bdd_node *newNode = createNode(index, label, low, high);
@@ -62,8 +62,8 @@ public:
       if (low == high) return low;
       char hashString[100];
       sprintf(hashString, "%d,%d,%d", index,
-	      reinterpret_cast<int>(low),
-	      reinterpret_cast<int>(high));
+	      reinterpret_cast<size_t>(low),
+	      reinterpret_cast<size_t>(high));
       bdd_node *it = uniqueTable.lookup(hashString);
       if (it) return it;
       bdd_node *newNode = createNode(index, label, low, high);
@@ -76,13 +76,13 @@ public:
   // If the Zero Node exists, return it, if not, create it and insert 
   // it into the the appropriate hash table.
   bdd_node *Zero() {
-    return findOrCreateNode(ZERO_INDEX, "0", NULL, NULL);
+    return findOrCreateNode(ZERO_INDEX, "ZERO", NULL, NULL);
   }
     
   // If the One Node exists, return it, if not, create it and insert 
   // it into the the appropriate hash table.
   bdd_node *One() {
-    return findOrCreateNode(ONE_INDEX, "1", NULL, NULL);
+    return findOrCreateNode(ONE_INDEX, "ONE", NULL, NULL);
   }
 
   inline bdd_node *getOne() { return ONE_NODE; }
@@ -117,23 +117,23 @@ public:
   // Here is the primary ITE function. It should work just as defined
   // in the lectures.
   bdd_node *ITE(bdd_node *I, bdd_node *T, bdd_node *E) {
-    cout << "calling ITE with " << endl;
-    cout << "\tI->getLabel()=" << I->getLabel() << endl;
-    cout << "\tT->getLabel()=" << T->getLabel() << endl;
-    cout << "\tE->getLabel()=" << E->getLabel() << endl;
+    // cout << "calling ITE with " << endl;
+    // cout << "\tI->getLabel()=" << I->getLabel() << endl;
+    // cout << "\tT->getLabel()=" << T->getLabel() << endl;
+    // cout << "\tE->getLabel()=" << E->getLabel() << endl;
 
     // Terminal cases
     if (I == getOne()) {
-      cout << "I == 1, returning T" << endl;
+      // cout << "I == 1, returning T" << endl;
       return T;
     } else if (I == getZero()) {
-      cout << "I == 0, returning E" << endl;
+      // cout << "I == 0, returning E" << endl;
       return E;
     } else if (T == One() && E == Zero()) {
-      cout << "T == 1 and E == 0, returning I" << endl;
+      // cout << "T == 1 and E == 0, returning I" << endl;
       return I;
     } else if (T == E) {
-      cout << "T == E, returning E" << endl;
+      // cout << "T == E, returning E" << endl;
       return E;
     }
     
@@ -142,9 +142,9 @@ public:
 
       // Generate hashString
       char hashString[100];
-      sprintf(hashString, "%d,%d,%d", reinterpret_cast<int>(I),
-        reinterpret_cast<int>(T),
-        reinterpret_cast<int>(E));
+      sprintf(hashString, "%d,%d,%d", reinterpret_cast<size_t>(I),
+        reinterpret_cast<size_t>(T),
+        reinterpret_cast<size_t>(E));
 
       // Check if operation table has entry for (I, T, E)
       if (opTable.lookup(hashString) != NULL) {
@@ -153,24 +153,24 @@ public:
      
       // Choose splitting variable: smallest var among roots of I, T, E
       int x = std::min(std::min(I->getIndex(), T->getIndex()), E->getIndex());
-      cout << "splitting var: " << x << endl;
+      // cout << "splitting var: " << x << endl;
 
       // Find positive and negative cofactors
       bdd_node *PosFactor = ITE(RESTRICT(I,x,1), RESTRICT(T,x,1), RESTRICT(E,x,1));
       bdd_node *NegFactor = ITE(RESTRICT(I,x,0), RESTRICT(T,x,0), RESTRICT(E,x,0));
 
-      // TODO: Create new label
+      // Create new label
       char new_label[100];
       sprintf(new_label, "label%d", CUR_INDEX);
-      cout << "new_label: " << new_label << endl;
+      // cout << "new_label: " << new_label << endl;
 
       // Create new node for splitting variable
       bdd_node* R = findOrCreateNode(x, new_label, NegFactor, PosFactor);
 
       // Insert into operation table
-      sprintf(hashString, "%d,%d,%d", reinterpret_cast<int>(I),
-        reinterpret_cast<int>(T),
-        reinterpret_cast<int>(E));
+      sprintf(hashString, "%d,%d,%d", reinterpret_cast<size_t>(I),
+        reinterpret_cast<size_t>(T),
+        reinterpret_cast<size_t>(E));
       opTable.insert(hashString, R);
 
       return R;
