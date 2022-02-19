@@ -1,4 +1,4 @@
-CFLAGS = -ggdb3 -m64 -Wno-deprecated -Wno-write-strings -Wformat=2 -DDEBUG \
+CFLAGS = -ggdb3 -m64 -Wno-deprecated -Wno-write-strings -Wno-format -Wformat=2 -DDEBUG \
 -Wold-style-cast
 #CFLAGS = -O3
 

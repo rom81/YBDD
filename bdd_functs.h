@@ -50,7 +50,7 @@ public:
     if ((index == ONE_INDEX) || (index == ZERO_INDEX)) {
       char hashString[100];
       // This call treats pointers as integers; avert your eyes.
-      sprintf(hashString, "%d,%d,%d", index,
+      sprintf(hashString, "%zu,%zu,%zu", index,
 	      reinterpret_cast<size_t>(low),
 	      reinterpret_cast<size_t>(high));
       bdd_node *it = uniqueTable.lookup(hashString);
@@ -93,7 +93,8 @@ public:
   // node using the CUR_INDEX. It also needs to increment CUR_INDEX
   // when it is done.
   bdd_node *newVar(char *label) {
-    bdd_node *node = createNode(CUR_INDEX, label, NULL, NULL);
+    bdd_node *node = createNode(CUR_INDEX, label, getZero(), 
+      getOne());
     CUR_INDEX++;
     return node; 
   }
@@ -102,12 +103,10 @@ public:
   {
     // Case 1: Restrict on root node variable
     if (F->getIndex() == v) {
-      if (k == 1) {
-        return (F->getHigh() != NULL) ? F->getHigh() : One();
-      } 
-      else {
-        return (F->getLow() != NULL) ? F->getLow() : Zero();
-      }
+      if (k == 1) 
+        return (F->getHigh() != NULL) ? F->getHigh() : getOne();
+      else 
+        return (F->getLow() != NULL) ? F->getLow() : getZero();
     }
 
     // Case 2: Restrict on variable less than root node variable
@@ -117,25 +116,16 @@ public:
   // Here is the primary ITE function. It should work just as defined
   // in the lectures.
   bdd_node *ITE(bdd_node *I, bdd_node *T, bdd_node *E) {
-    // cout << "calling ITE with " << endl;
-    // cout << "\tI->getLabel()=" << I->getLabel() << endl;
-    // cout << "\tT->getLabel()=" << T->getLabel() << endl;
-    // cout << "\tE->getLabel()=" << E->getLabel() << endl;
 
     // Terminal cases
-    if (I == getOne()) {
-      // cout << "I == 1, returning T" << endl;
+    if (I == getOne()) 
       return T;
-    } else if (I == getZero()) {
-      // cout << "I == 0, returning E" << endl;
+    else if (I == getZero()) 
       return E;
-    } else if (T == One() && E == Zero()) {
-      // cout << "T == 1 and E == 0, returning I" << endl;
+    else if (T == getOne() && E == getZero()) 
       return I;
-    } else if (T == E) {
-      // cout << "T == E, returning E" << endl;
+    else if (T == E) 
       return E;
-    }
     
     // Recursive case
     else {
@@ -147,28 +137,25 @@ public:
         reinterpret_cast<size_t>(E));
 
       // Check if operation table has entry for (I, T, E)
-      if (opTable.lookup(hashString) != NULL) {
+      if (opTable.lookup(hashString) != NULL)
         return opTable.lookup(hashString);
-      }
      
-      // Choose splitting variable: smallest var among roots of I, T, E
-      int x = std::min(std::min(I->getIndex(), T->getIndex()), E->getIndex());
-      // cout << "splitting var: " << x << endl;
+      // Choose splitting variable: smallest among roots of I, T, E
+      int x = std::min(std::min(I->getIndex(), 
+        T->getIndex()), E->getIndex());
 
       // Find positive and negative cofactors
-      bdd_node *PosFactor = ITE(RESTRICT(I,x,1), RESTRICT(T,x,1), RESTRICT(E,x,1));
-      bdd_node *NegFactor = ITE(RESTRICT(I,x,0), RESTRICT(T,x,0), RESTRICT(E,x,0));
-
-      // Create new label
-      char new_label[100];
-      sprintf(new_label, "label%d", CUR_INDEX);
-      // cout << "new_label: " << new_label << endl;
+      bdd_node *PosFactor = ITE(RESTRICT(I,x,1), 
+        RESTRICT(T,x,1), RESTRICT(E,x,1));
+      bdd_node *NegFactor = ITE(RESTRICT(I,x,0), 
+        RESTRICT(T,x,0), RESTRICT(E,x,0));
 
       // Create new node for splitting variable
-      bdd_node* R = findOrCreateNode(x, new_label, NegFactor, PosFactor);
+      bdd_node* R = findOrCreateNode(x, 
+        const_cast<char*>(labelTable.lookup(x)), NegFactor, PosFactor);
 
       // Insert into operation table
-      sprintf(hashString, "%d,%d,%d", reinterpret_cast<size_t>(I),
+      sprintf(hashString, "%zu,%zu,%zu", reinterpret_cast<size_t>(I),
         reinterpret_cast<size_t>(T),
         reinterpret_cast<size_t>(E));
       opTable.insert(hashString, R);
@@ -180,15 +167,15 @@ public:
   // The following are stubs for all the basic logic operations. They 
   // should all be defined in terms of the ITE method.
   bdd_node *NOT(bdd_node *f) {
-    return ITE(f, Zero(), One());
+    return ITE(f, getZero(), getOne());
   }
     
   bdd_node *AND(bdd_node *f, bdd_node *g) {
-    return ITE(f, g, Zero());
+    return ITE(f, g, getZero());
   }
     
   bdd_node *OR(bdd_node *f, bdd_node *g) {
-    return ITE(f, One(), g);
+    return ITE(f, getOne(), g);
   }
     
   bdd_node *XOR(bdd_node *f, bdd_node *g) {
